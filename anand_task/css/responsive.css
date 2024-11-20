@@ -1,0 +1,57 @@
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    /* Navigation */
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    /* Stadium Grid */
+    .stadium-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Seat Selection */
+    .seating-layout {
+        transform: scale(0.8);
+    }
+
+    /* Payment Form */
+    .payment-wrapper {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Stadium Cards */
+    .stadium-card {
+        margin: 1rem;
+    }
+
+    /* Seat Selection */
+    .seating-layout {
+        transform: scale(0.6);
+    }
+} 

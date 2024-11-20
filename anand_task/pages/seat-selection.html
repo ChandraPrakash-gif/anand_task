@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Seats - StadiumTix</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>StadiumTix</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="stadium-list.html">Stadiums</a></li>
+                <li><a href="match-schedule.html">Matches</a></li>
+                <li><a href="#" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="seat-selection-container">
+        <div class="match-details">
+            <h2>Team A vs Team B</h2>
+            <p>National Sports Stadium | 24 March 2024 | 7:30 PM</p>
+        </div>
+
+        <div class="seating-layout">
+            <div class="stage">STAGE</div>
+            
+            <div class="seat-categories">
+                <h3>Premium - $100</h3>
+                <div class="seat-map">
+                    <!-- Premium Rows (A-C) -->
+                    <div class="seat-row">
+                        <span class="row-label">A</span>
+                        <div class="seat available" data-seat="A1"></div>
+                        <div class="seat available" data-seat="A2"></div>
+                        <div class="seat booked" data-seat="A3"></div>
+                        <div class="seat available" data-seat="A4"></div>
+                        <div class="seat available" data-seat="A5"></div>
+                        <span class="row-label">A</span>
+                    </div>
+                    <div class="seat-row">
+                        <span class="row-label">B</span>
+                        <div class="seat available" data-seat="B1"></div>
+                        <div class="seat booked" data-seat="B2"></div>
+                        <div class="seat available" data-seat="B3"></div>
+                        <div class="seat available" data-seat="B4"></div>
+                        <div class="seat booked" data-seat="B5"></div>
+                        <span class="row-label">B</span>
+                    </div>
+                </div>
+
+                <h3>Standard - $50</h3>
+                <div class="seat-map">
+                    <!-- Standard Rows (D-F) -->
+                    <div class="seat-row">
+                        <span class="row-label">D</span>
+                        <div class="seat available" data-seat="D1"></div>
+                        <div class="seat available" data-seat="D2"></div>
+                        <div class="seat available" data-seat="D3"></div>
+                        <div class="seat booked" data-seat="D4"></div>
+                        <div class="seat available" data-seat="D5"></div>
+                        <span class="row-label">D</span>
+                    </div>
+                    <div class="seat-row">
+                        <span class="row-label">E</span>
+                        <div class="seat available" data-seat="E1"></div>
+                        <div class="seat available" data-seat="E2"></div>
+                        <div class="seat booked" data-seat="E3"></div>
+                        <div class="seat available" data-seat="E4"></div>
+                        <div class="seat available" data-seat="E5"></div>
+                        <span class="row-label">E</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seat-legend">
+                <div class="legend-item">
+                    <div class="seat available"></div>
+                    <span>Available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="seat booked"></div>
+                    <span>Booked</span>
+                </div>
+                <div class="legend-item">
+                    <div class="seat selected"></div>
+                    <span>Selected</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-summary">
+            <h3>Booking Summary</h3>
+            <div class="selected-seats">
+                <p>Selected Seats: <span id="seat-numbers">None</span></p>
+                <p>Total Amount: <span id="total-amount">$0</span></p>
+            </div>
+            <a href="payment.html" class="proceed-btn">Proceed to Payment</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Your trusted platform for stadium ticket booking</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@stadiumtix.com</p>
+                <p>Phone: +1 234 567 890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 StadiumTix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add interactivity to seats
+        document.querySelectorAll('.seat.available').forEach(seat => {
+            seat.addEventListener('click', function() {
+                this.classList.toggle('selected');
+                updateBookingSummary();
+            });
+        });
+
+        function updateBookingSummary() {
+            const selectedSeats = document.querySelectorAll('.seat.selected');
+            const seatNumbers = Array.from(selectedSeats).map(seat => seat.dataset.seat);
+            const totalAmount = selectedSeats.length * 50; // Basic calculation
+
+            document.getElementById('seat-numbers').textContent = 
+                seatNumbers.length ? seatNumbers.join(', ') : 'None';
+            document.getElementById('total-amount').textContent = 
+                `$${totalAmount}`;
+        }
+    </script>
+</body>
+</html> 
